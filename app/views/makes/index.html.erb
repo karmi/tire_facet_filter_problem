@@ -12,7 +12,7 @@
 <% @makes.each do |make| %>
   <tr>
     <td><%= make.name %></td>
-    <td><%= make.category %></td>
+    <td><%= make.category.name %></td>
     <td><%= link_to 'Show', make %></td>
     <td><%= link_to 'Edit', edit_make_path(make) %></td>
     <td><%= link_to 'Destroy', make, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+
+label.check_boxes {display: block;}
+span.checkbox  {display: block;}

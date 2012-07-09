@@ -9,7 +9,7 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.association :part_group %>
-  <%= f.association :vehicles, :as => :check_boxes %>
+  <%= f.association :vehicles, :as => :check_boxes, :label_method => :name %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
