@@ -1,0 +1,23 @@
+<h1>Listing part_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @part_groups.each do |part_group| %>
+  <tr>
+    <td><%= part_group.name %></td>
+    <td><%= link_to 'Show', part_group %></td>
+    <td><%= link_to 'Edit', edit_part_group_path(part_group) %></td>
+    <td><%= link_to 'Destroy', part_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Part group', new_part_group_path %>

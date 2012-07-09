@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  body_type: MyString
+  power: 1
+  capacity: 1
+  year_from: 1
+  year_to: 1
+  make: 
+  model: 
+
+two:
+  body_type: MyString
+  power: 1
+  capacity: 1
+  year_from: 1
+  year_to: 1
+  make: 
+  model: 

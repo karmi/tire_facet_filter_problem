@@ -1,0 +1,17 @@
+<%= simple_form_for @model do |f| %>
+  <% if f.error_notification %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= f.error_notification %>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.association :make %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t(:cancel), '', :class => 'cancel_form btn btn-danger' %>
+  </div>
+
+<% end %>

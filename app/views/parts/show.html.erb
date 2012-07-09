@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @part.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @part.description %>
+</p>
+
+<p>
+  <b>Vehicles:</b><br />
+  <% @part.vehicles.each do |v| %>
+  	<%= v.make.name %> <%= v.model.name %>, <%= v.power %>, <%= v.capacity %>, <%= v.year_from %>, <%= v.year_to %> <br />
+  <% end %>
+</p>
+
+<p>
+  <b>Part group:</b>
+  <%= @part.part_group.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

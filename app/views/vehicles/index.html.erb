@@ -1,0 +1,35 @@
+<h1>Listing vehicles</h1>
+
+<table>
+  <tr>
+    <th>Body type</th>
+    <th>Power</th>
+    <th>Capacity</th>
+    <th>Year from</th>
+    <th>Year to</th>
+    <th>Make</th>
+    <th>Model</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vehicles.each do |vehicle| %>
+  <tr>
+    <td><%= vehicle.body_type %></td>
+    <td><%= vehicle.power %></td>
+    <td><%= vehicle.capacity %></td>
+    <td><%= vehicle.year_from %></td>
+    <td><%= vehicle.year_to %></td>
+    <td><%= vehicle.make %></td>
+    <td><%= vehicle.model %></td>
+    <td><%= link_to 'Show', vehicle %></td>
+    <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+    <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vehicle', new_vehicle_path %>
