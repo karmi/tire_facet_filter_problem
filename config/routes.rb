@@ -11,6 +11,10 @@ TireSample::Application.routes.draw do
   resources :makes
 
   resources :categories
+  
+  #match '/' => 'welcome#index', :as => :search
+
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

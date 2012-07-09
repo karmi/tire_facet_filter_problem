@@ -8,4 +8,12 @@ class Vehicle < ActiveRecord::Base
   def name
   	"#{self.make.name} #{self.model.name} #{self.year_from}-#{self.year_to} (#{self.power} KM)"
   end
+
+  def make_name
+  	self.make.name
+  end
+
+  def model_name
+  	self.model.name
+  end
 end

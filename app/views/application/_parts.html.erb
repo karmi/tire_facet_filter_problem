@@ -1,0 +1,72 @@
+
+<div class="facets" style="float:left;width:300px;">
+  <ul> Engine power (<%= link_to 'clear', root_path(params.merge({:power => nil, :page => nil})) %>)
+  <% if @results.facets['power'] %>
+    <% @results.facets['power']['terms'].each do |facet| %>
+      <% next if facet['count'].to_i == 0 %>
+      <li>
+        <%= link_to "#{facet['term']} KM", root_path(params.merge({:power => facet['term'], :page => nil}))  %> (<%=facet['count'] %>)
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+
+  <ul> Engine capacity (<%= link_to 'clear', root_path(params.merge({:capacity => nil, :page => nil})) %>)
+  <% if @results.facets['capacity'] %>
+    <% @results.facets['capacity']['terms'].each do |facet| %>
+      <% next if facet['count'].to_i == 0 %>
+      <li>
+        <%= link_to "#{facet['term']} cm3", root_path(params.merge({:capacity => facet['term'], :page => nil}))  %> (<%=facet['count'] %>)
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+
+<div class="parts" style="float:left;">
+  <p><strong>Found <%= @results.total_entries %> car part(s)</strong></p>
+
+  <p> Selected filters:
+  <% if params[:q].present? %>
+    <span>
+      <strong><%= params[:q] %></strong>
+      <%= link_to 'x', root_path(params.merge({:q => nil, :page => nil})) %>
+    </span>
+  <% end %>
+
+  <% if params[:power].present? %>
+    <span>
+      <strong><%= params[:power] %> KM</strong>
+      <%= link_to 'x', root_path(params.merge({:power => nil, :page => nil})) %>
+    </span>
+  <% end %>
+  <% if params[:capacity].present? %>
+    <span>
+      <strong><%= params[:capacity] %> cm3</strong>
+      <%= link_to 'x', root_path(params.merge({:capacity => nil, :page => nil})) %>
+    </span>
+  <% end %>
+  </p>
+
+  <% @results.each do |p| %>
+    <div class="part">
+      <span><%= link_to p.description, p %></span>
+      <p style="font-style:italic;margin-top:0.1em;margin-bottom:0.3em;">
+      <%= p.name %>, category: <%= p.part_group_id.to_i > 0 ? @groups.select { |m| m.id == p.part_group_id }.first.name : '' %>
+      </p>
+      <p style="font-style:italic;margin-top:0.1em;margin-bottom:0.3em;">
+        <%= p.description %>
+      </p>
+    </div>
+  <% end %>
+  <%= will_paginate @results %>
+  
+</div>
+<div style="clear:both">
+  <p><strong>CURL:</strong></p>
+  <p><%= @curl_query %></p>
+</div>
+<div style="clear:both">
+  <p><strong>JSON:</strong></p>
+  <p><%= @json_query %></p> 
+</div>

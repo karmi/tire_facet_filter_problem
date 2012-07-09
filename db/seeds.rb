@@ -53,7 +53,7 @@ Model.create!(:name => 'X5', :make_id => bmw.id)
 Model.create!(:name => '125', :make_id => fiat.id)
 Model.create!(:name => '126p', :make_id => fiat.id)
 Model.create!(:name => 'Bravo', :make_id => fiat.id)
-Model.create!(:name => 'Croma', :make_id => fiat.id)
+fiat_croma = Model.create!(:name => 'Croma', :make_id => fiat.id)
 
 Model.create!(:name => 'Escort', :make_id => ford.id)
 Model.create!(:name => 'Focus', :make_id => ford.id)
@@ -77,7 +77,16 @@ alfa_156_2 = Vehicle.create!(:make_id => alfa.id, :model_id => alfa_156.id, :bod
 alfa_156_3 = Vehicle.create!(:make_id => alfa.id, :model_id => alfa_156.id, :body_type => 'Hatchback', 
 				:power => 200, :capacity => 1700, :year_from => 2000, :year_to => 2009)
 
+fiat_croma_1 = Vehicle.create!(:make_id => fiat.id, :model_id => fiat_croma.id, :body_type => 'Combi', 
+				:power => 105, :capacity => 1896, :year_from => 2006, :year_to => 2012)
+
 
 Part.delete_all
 Part.create!(:name => 'Starter', :description => 'Extended guarantee - 5 years', 
 			 :part_group_id => starters.id, :vehicle_ids => [alfa_156_1.id, alfa_156_2.id])
+
+Part.create!(:name => 'Brake pad', :description => '2 years warranty', 
+			 :part_group_id => brake_pads.id, :vehicle_ids => [alfa_156_2.id])
+
+Part.create!(:name => 'Air filter', :description => '200% performance boost', 
+			 :part_group_id => air_filters.id, :vehicle_ids => [fiat_croma_1.id])

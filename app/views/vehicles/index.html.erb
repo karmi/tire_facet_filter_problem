@@ -21,8 +21,8 @@
     <td><%= vehicle.capacity %></td>
     <td><%= vehicle.year_from %></td>
     <td><%= vehicle.year_to %></td>
-    <td><%= vehicle.make %></td>
-    <td><%= vehicle.model %></td>
+    <td><%= vehicle.make.name %></td>
+    <td><%= vehicle.model.name %></td>
     <td><%= link_to 'Show', vehicle %></td>
     <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
     <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>

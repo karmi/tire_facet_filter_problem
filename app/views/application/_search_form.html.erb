@@ -1,0 +1,7 @@
+<div style="clear:both">
+<%= form_tag root_path, :method => 'get', :id => "search_form" do %>
+  <%= label_tag 'Make, model, part name:' %><br />
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag :search, :name => '', :value => "Search", :id => 'submit_button' %>
+<% end %>
+</div>
