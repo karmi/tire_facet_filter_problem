@@ -27,35 +27,35 @@ class WelcomeController < ApplicationController
       
       # this is how I understand it should work - please uncomment lines 30-48
       # 
-      # if capacity.blank?
-      #   search.facet 'power' do
-      #     terms 'vehicles.power', :size => 1000, :all_terms => true
-      #   end
-      # else
-      #   search.facet 'power' do
-      #     terms 'vehicles.power', :size => 1000, :all_terms => true, :facet_filter => {:term => {'vehicles.capacity' => capacity}}
-      #   end
-      # end
+      if capacity.blank?
+        search.facet 'power' do
+          terms 'vehicles.power', :size => 1000, :all_terms => true
+        end
+      else
+        search.facet 'power' do
+          terms 'vehicles.power', :size => 1000, :all_terms => true, :facet_filter => {:term => {'vehicles.capacity' => capacity}}
+        end
+      end
 
-      # if vehicle_power.blank?
-      #   search.facet 'capacity' do
-      #     terms 'vehicles.capacity', :size => 1000, :all_terms => true
-      #   end
-      # else
-      #   search.facet 'capacity' do
-      #     terms 'vehicles.capacity', :size => 1000, :all_terms => true, :facet_filter => {:term => {'vehicles.power' => vehicle_power.to_i}}
-      #   end
-      # end
-
-      # this is working now, but not filtering facet when one is selected
+      if vehicle_power.blank?
+        search.facet 'capacity' do
+          terms 'vehicles.capacity', :size => 1000, :all_terms => true
+        end
+      else
+        search.facet 'capacity' do
+          terms 'vehicles.capacity', :size => 1000, :all_terms => true, :facet_filter => {:term => {'vehicles.power' => vehicle_power.to_i}}
+        end
+      end
+      # this below is working, but not filtering facet when one is selected
       # comment this out (lines 52-58) when lines 30-48 are uncommented
-      search.facet 'power' do
-        terms 'vehicles.power', :size => 1000, :all_terms => true
-      end
+      #
+      # search.facet 'power' do
+      #   terms 'vehicles.power', :size => 1000, :all_terms => true
+      # end
 
-      search.facet 'capacity' do
-        terms 'vehicles.capacity', :size => 1000, :all_terms => true
-      end
+      # search.facet 'capacity' do
+      #   terms 'vehicles.capacity', :size => 1000, :all_terms => true
+      # end
 
        # pagination
       search.from ((params[:page].present? ? params[:page].to_i : 1).to_i * paginate_per) - paginate_per
